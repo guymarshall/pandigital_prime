@@ -6,21 +6,16 @@ What is the largest n-digit pandigital prime that exists?
 
 use rayon::prelude::*;
 
-mod math;
-mod user_input;
+pub fn is_prime(number: &i32) -> bool {
+    !(2..*number).any(|n| number % n == 0)
+}
 
 fn main() {
     let mut number: i32 = 123456789;
     let max: i32 = 987654321;
     let mut primes: Vec<i32> = Vec::new();
 
-    while number <= max {
-        let is_prime: bool = math::is_prime_number(number);
-        if is_prime {
-            primes.push(number);
-        }
-        number += 1;
-    }
+    let primes: Vec<i32> = (123456789..=987654321).into_par_iter().filter(is_prime).collect::<Vec<i32>>();
 
     println!("Primes: {:#?}", primes);
 }
