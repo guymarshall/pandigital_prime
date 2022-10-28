@@ -10,7 +10,7 @@ fn is_prime(number: &i64) -> bool {
     !(2..*number).any(|n| number % n == 0)
 }
 
-fn is_pandigital(number: i64) -> bool {
+fn is_pandigital(number: &i64) -> bool {
     let digits: String = number.to_string();
 
     let one_count: usize = digits.matches("1").count();
@@ -27,13 +27,9 @@ fn is_pandigital(number: i64) -> bool {
 }
 
 fn main() {
-    let primes: Vec<i64> = (123456789..=123457899).into_par_iter().filter(is_prime).collect::<Vec<i64>>();
+    let primes: Vec<i64> = (123456789..=123458899).into_par_iter().filter(is_prime).collect::<Vec<i64>>();
 
-    // let mut numbers: Vec<i64> = vec![1, 2, 123456789, 987654321, 983217465];
+    let pandigital_primes: Vec<i64> = primes.into_par_iter().filter(is_pandigital).collect::<Vec<i64>>();
 
-    for number in primes {
-        println!("{} is pandigital: {}", number, is_pandigital(number));
-    }
-
-    // println!("Primes: {:#?}", primes);
+    println!("Pandigital primes: {:#?}", pandigital_primes);
 }
