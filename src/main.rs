@@ -8,17 +8,33 @@ mod math;
 mod user_input;
 
 fn main() {
-    let user_input: i32 = user_input::get_user_input("Enter a positive integer: ");
+    // let mut prime_number_count: i32 = 0;
+    // let mut number: i32 = 2;
 
-    let mut prime_number_count: i32 = 0;
-    let mut number: i32 = 2;
+    // while prime_number_count < user_input {
+    //     let is_prime: bool = math::is_prime_number(number);
+    //     if is_prime {
+    //         prime_number_count += 1;
+    //         println!("{}: {}", prime_number_count, number);
+    //     }
+    //     number += 1;
+    // }
 
-    while prime_number_count < user_input {
+    // 9 digit
+    // 100_000_000
+    // 123456789
+
+    let mut number: i32 = 123456789;
+    let max: i32 = 987654321;
+    let mut primes: Vec<i32> = Vec::new();
+
+    while number <= max {
         let is_prime: bool = math::is_prime_number(number);
         if is_prime {
-            prime_number_count += 1;
-            println!("{}: {}", prime_number_count, number);
+            primes.push(number);
         }
         number += 1;
     }
+
+    println!("Primes: {:#?}", primes);
 }
