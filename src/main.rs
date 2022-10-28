@@ -8,10 +8,10 @@ mod math;
 mod user_input;
 
 fn main() {
-    let user_input: u128 = user_input::get_user_input("Enter a positive integer: ");
+    let user_input: i32 = user_input::get_user_input("Enter a positive integer: ");
 
-    let mut prime_number_count: u128 = 0;
-    let mut number: u128 = 2;
+    let mut prime_number_count: i32 = 0;
+    let mut number: i32 = 2;
 
     while prime_number_count < user_input {
         let is_prime: bool = math::is_prime_number(number);
