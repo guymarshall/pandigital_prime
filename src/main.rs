@@ -11,7 +11,7 @@ pub fn is_prime(number: &i32) -> bool {
 }
 
 fn main() {
-    let primes: Vec<i32> = (123456789..=987654321).into_par_iter().filter(is_prime).collect::<Vec<i32>>();
+    let primes: Vec<i32> = (123456789..=123457899).into_par_iter().filter(is_prime).collect::<Vec<i32>>();
 
     println!("Primes: {:#?}", primes);
 }
