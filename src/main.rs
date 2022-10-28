@@ -27,7 +27,7 @@ fn is_pandigital(number: &i64) -> bool {
 }
 
 fn main() {
-    let primes: Vec<i64> = (123456789..=123458899).into_par_iter().filter(is_prime).collect::<Vec<i64>>();
+    let primes: Vec<i64> = (123456789..=123558899).into_par_iter().filter(is_prime).collect::<Vec<i64>>();
 
     let pandigital_primes: Vec<i64> = primes.into_par_iter().filter(is_pandigital).collect::<Vec<i64>>();
 
