@@ -4,6 +4,8 @@ We shall say that an n-digit number is pandigital if it makes use of all the dig
 What is the largest n-digit pandigital prime that exists?
 */
 
+use rayon::prelude::*;
+
 mod math;
 mod user_input;
 
