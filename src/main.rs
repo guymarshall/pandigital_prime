@@ -22,14 +22,39 @@ fn is_pandigital(number: &i64) -> bool {
     let seven_count: usize = digits.matches("7").count();
     let eight_count: usize = digits.matches("8").count();
     let nine_count: usize = digits.matches("9").count();
+    let zero_count: usize = digits.matches("0").count();
 
-    one_count == 1 && two_count == 1 && three_count == 1 && four_count == 1 && five_count == 1 && six_count == 1 && seven_count == 1 && eight_count == 1 && nine_count == 1
+    one_count <= 1 && two_count <= 1 && three_count <= 1 && four_count <= 1 && five_count <= 1 && six_count <= 1 && seven_count <= 1 && eight_count <= 1 && nine_count <= 1 && zero_count <= 1
 }
 
 fn main() {
-    let primes: Vec<i64> = (123456789..=123558899).into_par_iter().filter(is_prime).collect::<Vec<i64>>();
+    // let primes: Vec<i64> = (123456789..=123558899).into_par_iter().filter(is_prime).collect::<Vec<i64>>();
 
-    let pandigital_primes: Vec<i64> = primes.into_par_iter().filter(is_pandigital).collect::<Vec<i64>>();
+    // let pandigital_primes: Vec<i64> = primes.into_par_iter().filter(is_pandigital).collect::<Vec<i64>>();
 
-    println!("Pandigital primes: {:#?}", pandigital_primes);
+    let pandigital_numbers: Vec<i64> = (2..=987654321).into_par_iter().filter(is_pandigital).collect::<Vec<i64>>();
+    println!("Finished collecting pandigital numbers. Searching for primes...");
+    
+    // let mut largest_pandigital_prime: i64 = 0;
+    // for number in pandigital_numbers {
+    //     if is_prime(number) {
+    //         largest_pandigital_prime = number;
+    //         break;
+    //     }
+    // }
+
+    let reversed_pandigital_numbers: Vec<i64> = pandigital_numbers.into_par_iter().rev().collect();
+
+    for number in reversed_pandigital_numbers {
+        if is_prime(&number) {
+            println!("{}", number);
+            break;
+        }
+    }
+
+    // let pandigital_primes: Vec<i64> = pandigital_numbers.into_par_iter().filter(is_prime).collect::<Vec<i64>>();
+
+    // println!("Prime found: {:#?}", pandigital_primes);
+
+    // println!("Pandigital primes: {:#?}", pandigital_primes);
 }
