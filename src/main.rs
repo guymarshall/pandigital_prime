@@ -12,6 +12,7 @@ fn is_prime(number: &i64) -> bool {
 
 fn is_pandigital(number: &i64) -> bool {
     let digits: String = number.to_string();
+    let digit_count: usize = digits.len();
 
     let one_count: usize = digits.matches("1").count();
     let two_count: usize = digits.matches("2").count();
@@ -22,9 +23,19 @@ fn is_pandigital(number: &i64) -> bool {
     let seven_count: usize = digits.matches("7").count();
     let eight_count: usize = digits.matches("8").count();
     let nine_count: usize = digits.matches("9").count();
-    let zero_count: usize = digits.matches("0").count();
 
-    one_count <= 1 && two_count <= 1 && three_count <= 1 && four_count <= 1 && five_count <= 1 && six_count <= 1 && seven_count <= 1 && eight_count <= 1 && nine_count <= 1 && zero_count <= 1
+    match digit_count {
+        1 => one_count == 1,
+        2 => one_count == 1 && two_count == 1,
+        3 => one_count == 1 && two_count == 1 && three_count == 1,
+        4 => one_count == 1 && two_count == 1 && three_count == 1 && four_count == 1,
+        5 => one_count == 1 && two_count == 1 && three_count == 1 && four_count == 1 && five_count == 1,
+        6 => one_count == 1 && two_count == 1 && three_count == 1 && four_count == 1 && five_count == 1 && six_count == 1,
+        7 => one_count == 1 && two_count == 1 && three_count == 1 && four_count == 1 && five_count == 1 && six_count == 1 && seven_count == 1,
+        8 => one_count == 1 && two_count == 1 && three_count == 1 && four_count == 1 && five_count == 1 && six_count == 1 && seven_count == 1 && eight_count == 1,
+        9 => one_count == 1 && two_count == 1 && three_count == 1 && four_count == 1 && five_count == 1 && six_count == 1 && seven_count == 1 && eight_count == 1 && nine_count == 1,
+        _ => false
+    }
 }
 
 fn main() {
